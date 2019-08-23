@@ -1,0 +1,2 @@
+class ProductWarehouse < ApplicationRecord
+end
