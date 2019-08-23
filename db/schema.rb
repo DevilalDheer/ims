@@ -10,21 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_23_182335) do
+ActiveRecord::Schema.define(version: 2019_08_23_184759) do
 
   create_table "product_warehouses", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "item_count"
+    t.integer "low_item_threshold"
   end
 
   create_table "products", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "sku_code"
+    t.string "name"
+    t.float "price"
   end
 
   create_table "warehouses", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "wh_code"
+    t.string "name"
+    t.string "pincode"
+    t.integer "max_capacity"
   end
 
 end
