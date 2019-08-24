@@ -1,2 +1,0 @@
-class ProductWarehouse < ApplicationRecord
-end
