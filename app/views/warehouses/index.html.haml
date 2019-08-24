@@ -1,0 +1,14 @@
+%p#notice= notice
+%h1 Warehouses
+%table
+  %thead
+    %tr
+      %th{:colspan => "3"}
+  %tbody
+    - @warehouses.each do |warehouse|
+      %tr
+        %td= link_to 'Show', warehouse
+        %td= link_to 'Edit', edit_warehouse_path(warehouse)
+        %td= link_to 'Destroy', warehouse, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Warehouse', new_warehouse_path
