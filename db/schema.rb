@@ -12,13 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2019_08_24_031110) do
 
-  create_table "product_warehouses", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "item_count"
-    t.integer "low_item_threshold"
-  end
-
   create_table "products", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
