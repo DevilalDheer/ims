@@ -15,15 +15,15 @@
     = form.text_field :sku_code, minlength: 8, maxlength: 8
   %p
     = form.label :product_price
-    = form.text_field :price
+    = form.number_field :price, step: "0.01"
   %p
     = form.fields_for :warehouse_products do |s|
       %p
-        = s.label :item_count
-        = s.text_field :item_count
+        = s.label "item_count for warehouse product #{s.index+1}"
+        = s.number_field :item_count
       %p
-        = s.label :low_item_threshold
-        = s.text_field :low_item_threshold
+        = s.label "low_item_threshold for warehouse product #{s.index+1}"
+        = s.number_field :low_item_threshold
   .actions
     = form.submit
 

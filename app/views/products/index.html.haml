@@ -1,20 +1,18 @@
-:css
-  .alert{
-    background-color:red;
-  }
 %p#notice= notice
 %h1 Products
 %table
   %thead
     %tr
+      %th
       %th Sku Code
       %th Name
       - @warehouses.each do |w|
         %th= w.name
       %th Action
   %tbody
-    - @products.each do |product|
+    - @products.each_with_index do |product,i|
       %tr
+        %td=i+1
         %td= link_to product.sku_code, edit_product_path(product)
         %td= product.name
         - product.warehouse_products.each do |wp|

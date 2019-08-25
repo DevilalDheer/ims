@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:edit, :update]
+  before_action :set_product, only: [:edit, :update, :show]
   def index
   	@warehouses = Warehouse.all
     @products = Product.includes(warehouse_products: :warehouse)
@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   def edit
     @product.warehouse_products
   end
-  
+
   def update
     respond_to do |format|
       if @product.update(product_params)
@@ -19,6 +19,9 @@ class ProductsController < ApplicationController
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def show
   end
 
   private
