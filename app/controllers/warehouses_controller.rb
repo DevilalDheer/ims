@@ -15,7 +15,7 @@ class WarehousesController < ApplicationController
   # GET /warehouses/new
   def new
     @warehouse = Warehouse.new
-    @warehouse.products.build
+    3.times { @warehouse.products.build }
   end
 
   # GET /warehouses/1/edit

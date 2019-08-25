@@ -1,4 +1,4 @@
-= form_with(model: warehouse, local: true) do |form|
+= form_for @warehouse do |form|
   - if warehouse.errors.any?
     #error_explanation
       %h2
@@ -9,9 +9,9 @@
           %li= message
   %p
     = form.label :wh_code
-    = form.text_field :wh_code
+    = form.text_field :wh_code, minlength: 4, maxlength: 16
   %p
-    = form.label :name
+    = form.label :warehouse_name
     = form.text_field :name
   %p
     = form.label :pincode
@@ -21,8 +21,15 @@
     = form.number_field :max_capacity
   %p
     = form.fields_for :products do |s|
-      = s.label :name
-      = s.text_field :name
+      %p
+        = s.label :product_name
+        = s.text_field :name
+      %p
+        = s.label :product_sku_code
+        = s.text_field :sku_code, minlength: 8, maxlength: 8
+      %p
+        = s.label :product_price
+        = s.text_field :price
   .actions
     = form.submit
 
