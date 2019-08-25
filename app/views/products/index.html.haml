@@ -1,0 +1,22 @@
+:css
+  .alert{
+    background-color:red;
+  }
+%p#notice= notice
+%h1 Products
+%table
+  %thead
+    %tr
+      %th Sku Code
+      %th Name
+      - @warehouses.each do |w|
+        %th= w.name
+      %th Action
+  %tbody
+    - @products.each do |product|
+      %tr
+        %td= link_to product.sku_code, edit_product_path(product)
+        %td= product.name
+        - product.warehouse_products.each do |wp|
+          %td{:class => wp.try(:item_count)<wp.low_item_threshold ? 'alert' : ''}= wp.try(:item_count)
+        %td= link_to 'Edit', edit_product_path(product)
