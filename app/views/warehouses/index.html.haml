@@ -3,10 +3,18 @@
 %table
   %thead
     %tr
+      %th Warehouse Code
+      %th Name
+      %th Pincode
+      %th Max Capacity
       %th{:colspan => "3"}
   %tbody
     - @warehouses.each do |warehouse|
       %tr
+        %td= warehouse.wh_code
+        %td= warehouse.name
+        %td= warehouse.pincode
+        %td= warehouse.max_capacity
         %td= link_to 'Show', warehouse
         %td= link_to 'Edit', edit_warehouse_path(warehouse)
         %td= link_to 'Destroy', warehouse, method: :delete, data: { confirm: 'Are you sure?' }
