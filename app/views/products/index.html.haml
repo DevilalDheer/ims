@@ -17,6 +17,12 @@
         %td=i+1
         %td= link_to product.sku_code, edit_product_path(product)
         %td= product.name
-        - product.warehouse_products.each do |wp|
-          %td{:class => wp.try(:item_count)<wp.low_item_threshold ? 'alert' : ''}= wp.try(:item_count)
+        - @warehouses.each do |w|
+          - if product.warehouse_products.pluck(:warehouse_id).include?(w.id)
+            - product.warehouse_products.each do |wp|
+              - if wp.warehouse_id == w.id
+                %td{:class => wp.try(:item_count)<wp.low_item_threshold ? 'alert' : ''}= wp.try(:item_count)
+                - break
+          - else
+            %td
         %td= link_to 'Edit', edit_product_path(product)
